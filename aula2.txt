@@ -1,0 +1,88 @@
+Introdução ao banco de dados:
+
+case 1: 
+Agenda de contatos
+
+Passo 1: Modelagem dos dados
+Análise de requisitos do sistema
+
+id (chave primária)
+nome (not null)
+fone (not null)
+email
+
+Passo 2: Criação do banco de dados
+worbench
+<ctrl><enter>  (executar o código query)
+
+sql (struture query language)
+
+Tipos de dados da linguagem sql
+int (números inteiros)
+char (String com "largura" fixa)
+varchar (String com "largura" variável)
+nvarchar (varchar + caracteres unicode)
+
+CRUD (Create Read Update Delete)
+___________________________________________
+Para remover uma tabela e todos os registros:
+drop table nome_da_tabela;
+
+Para remover um banco:
+drop database nome_do_banco;
+
+.......................................................................
+https://www.apachefriends.org/pt_br/index.html
+http://www.wampserver.com/en/
+https://www.draw.io/
+.......................................................................
+
+-- Comentários
+-- A linha abaixo criar um novo banco de dados
+create database agenda;
+-- A linha abaixo seleciona o banco de dados
+use agenda;
+-- A linha abaixo cria uma tabela 
+create table tb_contatos(id int primary key,
+nome varchar(50) not null,
+fone varchar(15) not null,email varchar(50));
+-- A linha abaixo exibe as tabelas:
+show tables;
+-- A linha abaixo descreva a tabela
+describe tb_contatos;
+-- inserindo dados na tabela (CRUD - Create)
+insert into tb_contatos(id,nome,fone,email)
+values(1,'Willian Gates','1111-1111','bill@outlook.com');
+insert into tb_contatos(id,nome,fone,email)
+values(2,'Linus Torvalds','2222-2222','linustorvalds@gmail.com');
+insert into tb_contatos(id,nome,fone,email)
+values(3,'Geovana','333-333','geovana@outlook.com');
+insert into tb_contatos(id,nome,fone)
+values(4,'Leandro','4444-1111');
+insert into tb_contatos(id,nome,fone,email)
+values(5,'Luis','5555-5555','luis@outlook.com');
+-- Pesquisando dados na tabela (CRUD - Read)
+select * from tb_contatos;
+-- selecionado registro de acordo com um criterio
+select * from tb_contatos where id =2;
+select * from tb_contatos where nome = 'Geovana';
+select * from tb_contatos where nome like 'L%';
+-- Selecionar em ordem alfabetica (asc ou desc)
+select * from tb_contatos order by nome asc;
+select * from tb_contatos order by nome desc;
+select nome,fone from tb_contatos;
+-- Criando um relatorio personalizado
+select nome as contato, fone as telefone from tb_contatos;
+-- alterando dados na tabela (CRUD -Update)
+update tb_contatos set nome='Willian Gates' where id=1;
+update tb_contatos set email='leandro@outlook.com' where id=4;
+update tb_contatos set nome='Luis Silva' , fone='5454-5454' where id=5;
+-- removendo registros da tabela (CRUD - Delete)
+delete from tb_contatos;
+-- removendo registros da tabela (CRUD - Delete - uma Linha)
+delete from tb_contatos where id=2;
+select * from tb_contatos;
+
+
+
+
